@@ -4,6 +4,7 @@
   const STORAGE_KEY = 'pocklune-site-google-consent-v2';
   const gtmId = document.documentElement.dataset.gtmId || '';
   const canLoadGoogleTags = /^GTM-[A-Z0-9]+$/.test(gtmId) && gtmId !== 'GTM-XXXXXXX';
+  let previousFocus = null;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag() {
@@ -72,10 +73,15 @@
     }
   };
 
-  const closeDialog = () => document.querySelector('.pocklune-consent')?.remove();
+  const closeDialog = ({ restoreFocus = true } = {}) => {
+    document.querySelector('.pocklune-consent')?.remove();
+    if (restoreFocus && previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus();
+    previousFocus = null;
+  };
 
   const showDialog = () => {
-    closeDialog();
+    closeDialog({ restoreFocus: false });
+    previousFocus = document.activeElement;
     const dialog = document.createElement('section');
     dialog.className = 'pocklune-consent';
     dialog.setAttribute('role', 'dialog');
@@ -99,6 +105,25 @@
       if (choice === 'refuse') {
         deleteAnalyticsCookies();
         if (previousChoice === 'accept') location.reload();
+      }
+    });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeDialog();
+        return;
+      }
+      if (event.key === 'Tab') {
+        const controls = [...dialog.querySelectorAll('button:not([disabled])')];
+        const first = controls[0];
+        const last = controls.at(-1);
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
       }
     });
     document.body.append(dialog);
