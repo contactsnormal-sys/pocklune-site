@@ -3,6 +3,7 @@
 
   const STORAGE_KEY = 'pocklune-site-google-consent-v2';
   const gtmId = document.documentElement.dataset.gtmId || '';
+  const gaMeasurementId = 'G-QXS4SG2VNL';
   const canLoadGoogleTags = /^GTM-[A-Z0-9]+$/.test(gtmId) && gtmId !== 'GTM-XXXXXXX';
   let previousFocus = null;
 
@@ -145,7 +146,9 @@
       if (!link) return;
       if (readChoice() !== 'accept') return;
       const analyticsEvent = link.dataset.analyticsEvent;
-      window.dataLayer.push({ event: analyticsEvent, placement: link.dataset.analyticsPlacement || 'unknown' });
+      const placement = link.dataset.analyticsPlacement || 'unknown';
+      window.dataLayer.push({ event: analyticsEvent, placement });
+      window.gtag('event', analyticsEvent, { send_to: gaMeasurementId, placement });
     });
   };
 
