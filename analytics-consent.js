@@ -145,7 +145,10 @@
       if (!link) return;
       if (readChoice() !== 'accept') return;
       const analyticsEvent = link.dataset.analyticsEvent;
-      window.dataLayer.push({ event: analyticsEvent, placement: link.dataset.analyticsPlacement || 'unknown' });
+      window.gtag('event', analyticsEvent, {
+        placement: link.dataset.analyticsPlacement || 'unknown',
+        transport_type: 'beacon',
+      });
     });
   };
 
