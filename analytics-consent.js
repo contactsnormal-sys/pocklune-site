@@ -139,8 +139,19 @@
     document.body.append(button);
   };
 
+  const addConsentedConversionTracking = () => {
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('[data-analytics-event]');
+      if (!link) return;
+      if (readChoice() !== 'accept') return;
+      const analyticsEvent = link.dataset.analyticsEvent;
+      window.dataLayer.push({ event: analyticsEvent, placement: link.dataset.analyticsPlacement || 'unknown' });
+    });
+  };
+
   addStyles();
   addSettingsButton();
+  addConsentedConversionTracking();
   const choice = readChoice();
   if (choice === 'accept') loadGtm();
   if (!choice) showDialog();
