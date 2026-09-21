@@ -135,6 +135,34 @@ h3 { font-size: 21px; line-height: 1.2; }
 .prose p, .prose li { color: #333b55; font-size: 17px; line-height: 1.7; }
 .notice { padding: 20px 22px; border-left: 5px solid var(--gold); background: #fff4d4; color: #4d3a13; }
 
+.calculator-hero { max-width: 1020px; }
+.privacy-note { display: inline-flex; margin-top: 12px; padding: 12px 16px; border-radius: 14px; background: #e7f3ee; color: var(--success); font-weight: 750; }
+.calculator-layout { display: grid; grid-template-columns: 1fr .82fr; gap: 24px; align-items: start; padding-bottom: 92px; }
+.calculator-card, .calculator-result { padding: clamp(24px, 4vw, 42px); border: 1px solid var(--line); border-radius: 28px; background: var(--white); box-shadow: 0 12px 40px rgba(13,19,51,.08); }
+.calculator-card h2, .calculator-result h2 { font-size: clamp(28px, 4vw, 42px); }
+.calculator-fields { display: grid; grid-template-columns: 1fr; gap: 9px; margin: 30px 0 24px; }
+.calculator-fields label { margin-top: 12px; font-weight: 800; }
+.calculator-fields small { color: var(--muted); line-height: 1.45; }
+.calculator-fields input { width: 100%; min-height: 52px; padding: 0 16px; border: 1px solid #aab0c0; border-radius: 14px; background: #fff; color: var(--navy); font: 700 18px/1 ui-monospace, "Cascadia Code", monospace; }
+.calculator-fields input:focus-visible { outline: 3px solid rgba(255,200,87,.55); outline-offset: 2px; border-color: var(--navy); }
+.money-field { position: relative; }
+.money-field input { padding-right: 48px; }
+.money-field span { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 850; }
+.calculator-submit { width: 100%; border: 0; cursor: pointer; }
+.calculator-error { padding: 12px 14px; border-radius: 12px; background: #fee8e7; color: #8b1d18; font-weight: 750; }
+.calculator-result { position: sticky; top: 96px; background: var(--navy); color: var(--white); }
+.calculator-result .eyebrow { color: var(--gold); }
+.calculator-result p { color: #d8dcec; line-height: 1.6; }
+.result-placeholder { min-height: 120px; }
+.result-label { margin-bottom: 4px; font-weight: 800; }
+.result-amount { margin-bottom: 18px; color: var(--gold) !important; font: 900 clamp(42px, 7vw, 72px)/1 ui-monospace, "Cascadia Code", monospace; letter-spacing: -.07em; }
+.result-amount.negative { color: #ffaaa4 !important; }
+.result-formula { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.18); font: 650 13px/1.55 ui-monospace, "Cascadia Code", monospace; }
+.calculator-next-step { margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.18); }
+.calculator-next-step .button { width: 100%; border-color: var(--gold); background: var(--gold); color: var(--navy); text-align: center; }
+.calculator-explanation { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: start; }
+.calculator-explanation p { color: var(--muted); font-size: 18px; line-height: 1.6; }
+
 .site-footer { padding: 54px 0; border-top: 1px solid var(--line); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 28px; }
 .footer-grid h3 { font-size: 15px; }
@@ -143,12 +171,13 @@ h3 { font-size: 21px; line-height: 1.2; }
 
 @media (max-width: 860px) {
   .nav-links a:not(.button) { display: none; }
-  .hero, .feature-row { grid-template-columns: 1fr; }
+  .hero, .feature-row, .calculator-layout, .calculator-explanation { grid-template-columns: 1fr; }
   .hero { gap: 20px; padding-top: 56px; }
   .orbit-stage { min-height: 520px; }
   .grid-3, .price-grid { grid-template-columns: 1fr; }
   .cta { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .calculator-result { position: static; }
 }
 
 @media (max-width: 520px) {

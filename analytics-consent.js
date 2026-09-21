@@ -141,14 +141,19 @@
   };
 
   const addConsentedConversionTracking = () => {
+    window.pockluneTrackEvent = (analyticsEvent, placement = 'unknown') => {
+      if (readChoice() !== 'accept') return;
+      if (!/^[a-z][a-z0-9_]{1,39}$/.test(analyticsEvent)) return;
+      window.dataLayer.push({ event: analyticsEvent, placement });
+      window.gtag('event', analyticsEvent, { send_to: gaMeasurementId, placement });
+    };
+
     document.addEventListener('click', (event) => {
       const link = event.target.closest('[data-analytics-event]');
       if (!link) return;
-      if (readChoice() !== 'accept') return;
       const analyticsEvent = link.dataset.analyticsEvent;
       const placement = link.dataset.analyticsPlacement || 'unknown';
-      window.dataLayer.push({ event: analyticsEvent, placement });
-      window.gtag('event', analyticsEvent, { send_to: gaMeasurementId, placement });
+      window.pockluneTrackEvent(analyticsEvent, placement);
     });
   };
 

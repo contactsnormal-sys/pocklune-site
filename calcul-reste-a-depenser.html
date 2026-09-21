@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr" data-gtm-id="GTM-TB8LM2R4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculez gratuitement ce qu’il vous reste à dépenser ce mois-ci, sans connecter votre banque. Le calcul reste dans votre navigateur.">
+  <title>Calculer son reste à dépenser sans connexion bancaire | Pocklune</title>
+  <link rel="canonical" href="https://contactsnormal-sys.github.io/pocklune-site/calcul-reste-a-depenser.html">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./analytics-consent.js"></script>
+  <script defer src="./budget-calculator.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Navigation principale">
+      <a class="brand" href="./index.html"><img src="./assets/pocklune-mark.png" alt="">Pocklune</a>
+      <div class="nav-links">
+        <a href="./pricing.html">Offres</a>
+        <a href="./security.html">Sécurité</a>
+        <a class="button" href="https://play.google.com/store/apps/details?id=com.pocklune.app&amp;utm_source=pocklune_site&amp;utm_medium=seo_tool&amp;utm_campaign=calcul_reste_a_depenser" data-analytics-event="play_store_click" data-analytics-placement="calculator_header">Installer Pocklune</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero shell calculator-hero">
+      <p class="eyebrow">Calcul gratuit · sans connexion bancaire</p>
+      <h1>Calculer ce qu’il vous reste à dépenser</h1>
+      <p class="lead">Votre solde bancaire n’est pas forcément votre budget disponible. Soustrayez vos charges, votre marge de sécurité et ce que vous avez déjà dépensé pour obtenir un repère simple pour la fin du mois.</p>
+      <p class="privacy-note">Aucune somme n’est envoyée ni enregistrée. Le calcul reste dans votre navigateur.</p>
+    </section>
+
+    <section class="shell calculator-layout" aria-labelledby="calculator-title">
+      <form id="budget-calculator" class="calculator-card" novalidate>
+        <div>
+          <p class="eyebrow">Votre estimation</p>
+          <h2 id="calculator-title">Cinq données, un résultat vérifiable.</h2>
+          <p>Utilisez des montants mensuels. Les champs acceptent les virgules ou les points.</p>
+        </div>
+
+        <div class="calculator-fields">
+          <label for="monthly-income">Revenus disponibles ce mois-ci</label>
+          <div class="money-field"><input id="monthly-income" name="monthly-income" inputmode="decimal" autocomplete="off" required aria-describedby="monthly-income-help"><span aria-hidden="true">€</span></div>
+          <small id="monthly-income-help">Salaire, aides ou autres revenus réellement disponibles.</small>
+
+          <label for="fixed-charges">Charges et engagements à payer</label>
+          <div class="money-field"><input id="fixed-charges" name="fixed-charges" inputmode="decimal" autocomplete="off" value="0" required><span aria-hidden="true">€</span></div>
+
+          <label for="safety-margin">Épargne ou marge à protéger</label>
+          <div class="money-field"><input id="safety-margin" name="safety-margin" inputmode="decimal" autocomplete="off" value="0" required><span aria-hidden="true">€</span></div>
+
+          <label for="already-spent">Dépenses déjà faites</label>
+          <div class="money-field"><input id="already-spent" name="already-spent" inputmode="decimal" autocomplete="off" value="0" required><span aria-hidden="true">€</span></div>
+
+          <label for="days-left">Jours restant dans votre période</label>
+          <input id="days-left" name="days-left" type="number" min="1" max="31" step="1" value="7" required>
+        </div>
+
+        <p id="calculator-error" class="calculator-error" role="alert" hidden></p>
+        <button class="button gold calculator-submit" type="submit">Calculer mon reste</button>
+      </form>
+
+      <aside class="calculator-result" aria-labelledby="result-title">
+        <p class="eyebrow">Résultat local</p>
+        <h2 id="result-title">Votre repère apparaîtra ici.</h2>
+        <div id="calculator-output" aria-live="polite" aria-atomic="true">
+          <p class="result-placeholder">Le calcul détaillera le reste estimé et un repère quotidien. Vous gardez la décision finale.</p>
+        </div>
+        <div id="calculator-next-step" class="calculator-next-step" hidden>
+          <p>Pocklune permet ensuite de retrouver ce calcul, d’expliquer chaque somme et d’ajouter vos dépenses sans accès bancaire.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.pocklune.app&amp;utm_source=pocklune_site&amp;utm_medium=seo_tool&amp;utm_campaign=calcul_reste_a_depenser" data-analytics-event="play_store_click" data-analytics-placement="calculator_result">Continuer gratuitement dans Pocklune</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section gold-wash">
+      <div class="shell calculator-explanation">
+        <div>
+          <p class="eyebrow">Formule transparente</p>
+          <h2>Revenus − charges − marge − dépenses.</h2>
+        </div>
+        <div>
+          <p>Ce calcul fournit une estimation informative. Il ne consulte aucun compte bancaire et ne prend aucune décision à votre place.</p>
+          <p>Pocklune n’est ni une banque ni un conseiller financier. Vérifiez vos montants, vos dates et vos engagements avant de décider.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="brand" href="./index.html"><img src="./assets/pocklune-mark.png" alt="">Pocklune</a><p>Le budget privé, sans connexion bancaire.</p></div>
+      <div><h3>Produit</h3><a href="./calcul-reste-a-depenser.html">Calculateur gratuit</a><a href="./pricing.html">Offres</a><a href="./security.html">Sécurité</a></div>
+      <div><h3>Vos droits</h3><a href="./privacy.html">Confidentialité</a><a href="./account-deletion.html">Supprimer le compte</a></div>
+      <div><h3>Conditions</h3><a href="./terms.html">Conditions d’utilisation</a><a href="./legal-notice.html">Mentions légales</a><a href="./support.html">Aide</a></div>
+    </div>
+  </footer>
+</body>
+</html>
