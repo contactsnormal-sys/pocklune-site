@@ -1,6 +1,23 @@
 (() => {
   'use strict';
 
+  // Carry only known campaign labels to Google Play; never forward arbitrary URL input.
+  const campaignSource = new URL(window.location.href).searchParams;
+  const source = campaignSource.get('utm_source');
+  const campaign = campaignSource.get('utm_campaign');
+  const knownSources = new Set(['facebook', 'youtube']);
+  const knownCampaigns = new Set(['balance_reveal_20260922', 'cinq_donnees_20260928']);
+  if (knownSources.has(source) && knownCampaigns.has(campaign)) {
+    document.querySelectorAll('a[data-analytics-event="play_store_click"]').forEach((link) => {
+      const destination = new URL(link.href);
+      if (destination.hostname !== 'play.google.com' || destination.searchParams.get('id') !== 'com.pocklune.app') return;
+      destination.searchParams.set('utm_source', source);
+      destination.searchParams.set('utm_medium', 'calculator');
+      destination.searchParams.set('utm_campaign', campaign);
+      link.href = destination.toString();
+    });
+  }
+
   const form = document.querySelector('#budget-calculator');
   const output = document.querySelector('#calculator-output');
   const error = document.querySelector('#calculator-error');
