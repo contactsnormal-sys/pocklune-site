@@ -29,6 +29,7 @@ test('known Facebook and YouTube campaigns reach both Play CTAs with their sourc
     ['youtube', 'cinq_donnees_20260928'],
     ['youtube', 'balance_reveal_20260922'],
     ['youtube', 'carrousel_dynamique_v4_20260929'],
+    ['youtube', 'carrousel_dynamique_v5_20260929'],
   ]) {
     const links = playLinks(`?utm_source=${source}&utm_medium=profile&utm_campaign=${campaign}`);
     assert.equal(links.length, 2);
