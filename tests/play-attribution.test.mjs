@@ -25,6 +25,7 @@ function playLinks(query, hrefs = [defaultPlayUrl, defaultPlayUrl]) {
 test('known Facebook and YouTube campaigns reach both Play CTAs with their source', () => {
   for (const [source, campaign] of [
     ['facebook', 'cinq_donnees_20260928'],
+    ['facebook', 'carrousel_six_images_20260929'],
     ['youtube', 'cinq_donnees_20260928'],
     ['youtube', 'balance_reveal_20260922'],
     ['youtube', 'carrousel_dynamique_v4_20260929'],
