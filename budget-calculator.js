@@ -7,7 +7,9 @@
   const campaign = campaignSource.get('utm_campaign');
   const knownSources = new Set(['facebook', 'youtube']);
   const knownCampaigns = new Set(['balance_reveal_20260922', 'cinq_donnees_20260928', 'carrousel_dynamique_v4_20260929', 'carrousel_dynamique_v5_20260929', 'carrousel_six_images_20260929']);
-  if (knownSources.has(source) && knownCampaigns.has(campaign)) {
+  const studioYouTubeCampaigns = new Set(['studio_cinq_chiffres_05', 'studio_par_jour_06']);
+  if ((knownSources.has(source) && knownCampaigns.has(campaign)) ||
+      (source === 'youtube' && studioYouTubeCampaigns.has(campaign))) {
     document.querySelectorAll('a[data-analytics-event="play_store_click"]').forEach((link) => {
       const destination = new URL(link.href);
       if (destination.hostname !== 'play.google.com' || destination.searchParams.get('id') !== 'com.pocklune.app') return;

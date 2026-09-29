@@ -57,6 +57,20 @@ test('campaign labels are never copied to a non-Play destination', () => {
   assert.equal(link.href, foreign);
 });
 
+test('studio FR assets retain their distinct labels only on their YouTube route', () => {
+  for (const campaign of ['studio_cinq_chiffres_05', 'studio_par_jour_06']) {
+    for (const link of playLinks(`?utm_source=youtube&utm_medium=profile&utm_campaign=${campaign}&qa=codex_internal`)) {
+      assert.equal(link.searchParams.get('utm_campaign'), campaign);
+      assert.equal(link.searchParams.get('utm_source'), 'youtube');
+      assert.equal(link.searchParams.get('utm_medium'), 'calculator');
+      assert.equal(link.searchParams.has('qa'), false);
+    }
+    for (const link of playLinks(`?utm_source=facebook&utm_campaign=${campaign}`)) {
+      assert.equal(link.href, defaultPlayUrl);
+    }
+  }
+});
+
 test('calculator handoff explains re-entry and the destination instead of implying a transfer', () => {
   const html = readFileSync(new URL('../calcul-reste-a-depenser.html', import.meta.url), 'utf8');
   const handoff = html.split('id="calculator-next-step"')[1].split('</div>')[0];
