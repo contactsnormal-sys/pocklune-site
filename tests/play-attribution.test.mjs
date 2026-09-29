@@ -56,3 +56,21 @@ test('campaign labels are never copied to a non-Play destination', () => {
   const [link] = playLinks('?utm_source=facebook&utm_campaign=cinq_donnees_20260928', [foreign]);
   assert.equal(link.href, foreign);
 });
+
+test('calculator handoff explains re-entry and the destination instead of implying a transfer', () => {
+  const html = readFileSync(new URL('../calcul-reste-a-depenser.html', import.meta.url), 'utf8');
+  const handoff = html.split('id="calculator-next-step"')[1].split('</div>')[0];
+  assert.match(handoff, /montants ne sont pas transférés/);
+  assert.match(handoff, /saisissez vos montants/);
+  assert.match(handoff, /compte Pocklune confirmé/i);
+  assert.match(handoff, />Découvrir Pocklune sur Google Play<\/a>/);
+  assert.doesNotMatch(handoff, /retrouver ce calcul/);
+});
+
+test('financial inputs and QA labels never become Play URL parameters', () => {
+  const query = '?utm_source=facebook&utm_campaign=carrousel_six_images_20260929&monthly-income=700&charges=400&remaining=150&qa=codex_internal';
+  for (const link of playLinks(query)) {
+    assert.deepEqual([...link.searchParams.keys()].sort(), ['id', 'utm_campaign', 'utm_medium', 'utm_source']);
+    assert.equal(link.searchParams.get('utm_campaign'), 'carrousel_six_images_20260929');
+  }
+});
