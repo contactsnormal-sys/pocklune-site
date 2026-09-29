@@ -5,6 +5,9 @@
   const gtmId = document.documentElement.dataset.gtmId || '';
   const gaMeasurementId = 'G-QXS4SG2VNL';
   const canLoadGoogleTags = /^GTM-[A-Z0-9]+$/.test(gtmId) && gtmId !== 'GTM-XXXXXXX';
+  const isInternalQa = /^codex_internal(?:_[a-z0-9]+)?$/.test(
+    new URLSearchParams(window.location.search).get('qa') || '',
+  );
   let previousFocus = null;
 
   window.dataLayer = window.dataLayer || [];
@@ -50,7 +53,7 @@
   };
 
   const loadGtm = () => {
-    if (!canLoadGoogleTags || document.querySelector('script[data-pocklune-gtm]')) return;
+    if (isInternalQa || !canLoadGoogleTags || document.querySelector('script[data-pocklune-gtm]')) return;
     window.gtag('consent', 'update', {
       ad_storage: 'granted',
       ad_user_data: 'granted',
@@ -142,7 +145,7 @@
 
   const addConsentedConversionTracking = () => {
     window.pockluneTrackEvent = (analyticsEvent, placement = 'unknown') => {
-      if (readChoice() !== 'accept') return;
+      if (isInternalQa || readChoice() !== 'accept') return;
       if (!/^[a-z][a-z0-9_]{1,39}$/.test(analyticsEvent)) return;
       window.dataLayer.push({ event: analyticsEvent, placement });
       window.gtag('event', analyticsEvent, { send_to: gaMeasurementId, placement });
