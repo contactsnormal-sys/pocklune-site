@@ -1,0 +1,10 @@
+{
+  "status": "NOT_APPLIED_GITHUB_PAGES_HAS_NO_REPOSITORY_HEADER_CONFIGURATION",
+  "headers": {
+    "Content-Security-Policy": "default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com; font-src 'self'; form-action 'none'; upgrade-insecure-requests; frame-ancestors 'none'",
+    "Strict-Transport-Security": "max-age=31536000",
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  }
+}

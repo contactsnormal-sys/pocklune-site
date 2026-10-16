@@ -21,20 +21,6 @@
     wait_for_update: 500,
   });
 
-  const addStyles = () => {
-    const style = document.createElement('style');
-    style.textContent = `
-      .pocklune-consent{position:fixed;z-index:9999;inset:auto 16px 16px;max-width:720px;margin:auto;padding:20px;border:1px solid #d8d2c4;border-radius:20px;background:#fffdf8;color:#0d1333;box-shadow:0 18px 60px rgba(13,19,51,.22);font:16px/1.5 system-ui,-apple-system,sans-serif}
-      .pocklune-consent h2{margin:0 0 8px;font-size:21px;letter-spacing:0}
-      .pocklune-consent p{margin:0 0 16px;color:#4a526b}
-      .pocklune-consent-actions{display:flex;flex-wrap:wrap;gap:10px}
-      .pocklune-consent button{min-height:44px;padding:0 18px;border:1px solid #0d1333;border-radius:999px;background:#fff;color:#0d1333;font:700 14px system-ui,-apple-system,sans-serif;cursor:pointer}
-      .pocklune-consent button[data-choice="accept"]{background:#0d1333;color:#fff}
-      .pocklune-consent-settings{position:fixed;z-index:9998;right:14px;bottom:14px;min-height:40px;padding:0 14px;border:1px solid #0d1333;border-radius:999px;background:#fffdf8;color:#0d1333;font:700 12px system-ui,-apple-system,sans-serif;box-shadow:0 6px 24px rgba(13,19,51,.15);cursor:pointer}
-      @media(max-width:520px){.pocklune-consent{inset:auto 8px 8px}.pocklune-consent-actions button{flex:1}}
-    `;
-    document.head.append(style);
-  };
 
   const readChoice = () => {
     try {
@@ -157,7 +143,6 @@
     });
   };
 
-  addStyles();
   addSettingsButton();
   addConsentedConversionTracking();
   const choice = readChoice();
