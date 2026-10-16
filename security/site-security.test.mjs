@@ -12,7 +12,7 @@ const htmlPages = async (directory = '') => {
     if (['.git', 'node_modules'].includes(entry.name)) continue;
     const name = directory ? `${directory}/${entry.name}` : entry.name;
     if (entry.isDirectory()) pages.push(...await htmlPages(name));
-    else if (entry.name.endsWith('.html')) pages.push(name);
+    else if (entry.name.endsWith('.html') && !/^google[0-9a-f]+\.html$/.test(entry.name)) pages.push(name); // Search Console verification token file must stay byte-exact
   }
   return pages.sort();
 };
