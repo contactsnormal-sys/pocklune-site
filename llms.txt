@@ -1,0 +1,29 @@
+# Pocklune
+
+> Pocklune ("Pocklune : Budget privé") is a private budgeting app for iPhone and Android, published by 2J LAMBRE (SASU, Paris, France). It shows each day how much you really have left to spend this month, and why. It works without connecting a bank account and shows no advertising.
+
+Key facts:
+- No bank connection: no bank credentials, no aggregator. Users type income, bills and expenses, or import a statement they choose.
+- Budget data (amounts, receipts, photos) is stored on the phone. The account is used only for sign-in and subscriptions.
+- No advertising and no advertising trackers in the app. Data is never sold.
+- Free plan: monthly budget, amount left to spend, categories, daily mission, manual import/export.
+- Plus: 59.99 EUR/year (France, incl. VAT). Receipt and document scanning analysed on the phone. Free trial for eligible new subscribers (2 weeks on the App Store, 14 days on Google Play).
+- Premium IA: 12.99 EUR/month or 99.99 EUR/year. Everything in Plus, plus AI explanations of the budget based on categories only, never on amounts or receipts.
+- Prices vary by country; the exact price is shown by the App Store or Google Play before any payment. Subscriptions renew automatically and can be cancelled anytime from the Apple or Google account.
+- Languages: French, English, Spanish.
+
+## Download
+- [App Store](https://apps.apple.com/app/id6807771884): iPhone
+- [Google Play](https://play.google.com/store/apps/details?id=com.pocklune.app): Android
+
+## Pages
+- [Home (French)](https://contactsnormal-sys.github.io/pocklune-site/): overview
+- [Home (English)](https://contactsnormal-sys.github.io/pocklune-site/en.html): overview in English
+- [Pricing](https://contactsnormal-sys.github.io/pocklune-site/pricing.html): Free, Plus and Premium IA plans
+- [Free "left to spend" calculator](https://contactsnormal-sys.github.io/pocklune-site/calcul-reste-a-depenser.html): works in the browser, no sign-up
+- [Security](https://contactsnormal-sys.github.io/pocklune-site/security.html)
+- [AI transparency](https://contactsnormal-sys.github.io/pocklune-site/ai-transparency.html)
+- [Support](https://contactsnormal-sys.github.io/pocklune-site/support.html): contact@2jagency.com
+- [Privacy policy](https://contactsnormal-sys.github.io/pocklune-site/privacy.html)
+- [Terms](https://contactsnormal-sys.github.io/pocklune-site/terms.html)
+- [Legal notice](https://contactsnormal-sys.github.io/pocklune-site/legal-notice.html)
