@@ -77,7 +77,8 @@ test('calculator handoff explains re-entry and the destination instead of implyi
   assert.match(handoff, /montants ne sont pas transférés/);
   assert.match(handoff, /saisissez vos montants/);
   assert.match(handoff, /compte Pocklune confirmé/i);
-  assert.match(handoff, />Découvrir Pocklune sur Google Play<\/a>/);
+  assert.match(handoff, /store-big">Google Play</);
+  assert.match(handoff, /apps.apple.com\/fr\/app\/id6807771884/);
   assert.doesNotMatch(handoff, /retrouver ce calcul/);
 });
 

@@ -12,6 +12,113 @@
   <script defer src="./analytics-consent.js"></script>
   <script defer src="./budget-calculator.js?v=20260929-v5-attribution"></script>
   <link rel="stylesheet" href="./assets/analytics-consent.css">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Pocklune",
+ "alternateName": "Pocklune : Budget privé",
+ "applicationCategory": "FinanceApplication",
+ "operatingSystem": "iOS, Android",
+ "inLanguage": [
+  "fr",
+  "en",
+  "es"
+ ],
+ "url": "https://contactsnormal-sys.github.io/pocklune-site/",
+ "downloadUrl": [
+  "https://apps.apple.com/fr/app/id6807771884",
+  "https://play.google.com/store/apps/details?id=com.pocklune.app"
+ ],
+ "publisher": {
+  "@type": "Organization",
+  "name": "2J LAMBRE",
+  "email": "contact@2jagency.com"
+ },
+ "offers": [
+  {
+   "@type": "Offer",
+   "name": "Gratuit",
+   "price": "0",
+   "priceCurrency": "EUR"
+  },
+  {
+   "@type": "Offer",
+   "name": "Plus (annuel)",
+   "price": "59.99",
+   "priceCurrency": "EUR"
+  },
+  {
+   "@type": "Offer",
+   "name": "Premium IA (mensuel)",
+   "price": "12.99",
+   "priceCurrency": "EUR"
+  },
+  {
+   "@type": "Offer",
+   "name": "Premium IA (annuel)",
+   "price": "99.99",
+   "priceCurrency": "EUR"
+  }
+ ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Comment calculer son reste à dépenser ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Prenez vos revenus disponibles du mois, retirez les charges et engagements à payer, la marge ou l’épargne que vous voulez protéger, puis les dépenses déjà faites. Divisez le résultat par le nombre de jours restants pour obtenir un repère quotidien."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Faut-il connecter sa banque pour utiliser ce calculateur ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. Vous saisissez vous-même les montants. Le calcul se fait dans votre navigateur : aucune somme n’est envoyée ni enregistrée."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Pocklune se connecte-t-il à mon compte bancaire ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. Pocklune ne demande aucun identifiant bancaire et n’utilise aucun agrégateur. Vous saisissez vos revenus, charges et dépenses, ou importez un relevé que vous choisissez."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Pocklune est-il gratuit ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Oui, le cœur du budget est gratuit : budget mensuel, reste à dépenser, catégories et import/export manuel. Des abonnements optionnels existent (Plus à 59,99 €/an, Premium IA à 12,99 €/mois ou 99,99 €/an, prix France TTC) ; le prix exact est affiché par l’App Store ou Google Play avant tout paiement."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Où sont stockées mes données de budget ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Les montants, reçus et photos du budget restent sur votre téléphone. Le compte sert uniquement à la connexion et aux abonnements. Pocklune n’affiche aucune publicité et ne vend pas vos données."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Sur quels appareils fonctionne Pocklune ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sur iPhone (App Store) et Android (Google Play), en français, anglais et espagnol."
+   }
+  }
+ ]
+}
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -71,8 +178,11 @@
         </div>
         <div id="calculator-next-step" class="calculator-next-step" hidden>
           <p>Ce calcul reste sur cette page : ses montants ne sont pas transférés à l’application. Dans Pocklune, saisissez vos montants puis ajoutez vos dépenses pour suivre votre reste estimé et vérifier le détail du calcul, sans connexion bancaire.</p>
-          <p>Le cœur du budget est gratuit. Un compte Pocklune confirmé est requis pour accéder au produit complet ; les options payantes sont présentées dans Google Play avant confirmation.</p>
-          <a class="button" href="https://play.google.com/store/apps/details?id=com.pocklune.app&amp;utm_source=pocklune_site&amp;utm_medium=seo_tool&amp;utm_campaign=calcul_reste_a_depenser" data-analytics-event="play_store_click" data-analytics-placement="calculator_result">Découvrir Pocklune sur Google Play</a>
+          <p>Le cœur du budget est gratuit. Un compte Pocklune confirmé est requis pour accéder au produit complet ; les options payantes et leur prix sont affichés par l’App Store ou Google Play avant toute confirmation.</p>
+          <div class="store-buttons">
+            <a class="store-button" href="https://apps.apple.com/fr/app/id6807771884" data-analytics-event="app_store_click" data-analytics-placement="calculator_result"><span class="store-small">Télécharger dans l’</span><span class="store-big">App Store</span></a>
+            <a class="store-button" href="https://play.google.com/store/apps/details?id=com.pocklune.app&amp;utm_source=pocklune_site&amp;utm_medium=seo_tool&amp;utm_campaign=calcul_reste_a_depenser" data-analytics-event="play_store_click" data-analytics-placement="calculator_result"><span class="store-small">Disponible sur</span><span class="store-big">Google Play</span></a>
+          </div>
         </div>
       </aside>
     </section>
@@ -87,6 +197,29 @@
           <p>Ce calcul fournit une estimation informative. Il ne consulte aucun compte bancaire et ne prend aucune décision à votre place.</p>
           <p>Pocklune n’est ni une banque ni un conseiller financier. Vérifiez vos montants, vos dates et vos engagements avant de décider.</p>
         </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="shell">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Reste à dépenser : vos questions</h2>
+        <h3>Comment calculer son reste à dépenser ?</h3>
+        <p>Prenez vos revenus disponibles du mois, retirez les charges et engagements à payer, la marge ou l’épargne que vous voulez protéger, puis les dépenses déjà faites. Divisez le résultat par le nombre de jours restants pour obtenir un repère quotidien.</p>
+        <h3>Faut-il connecter sa banque pour utiliser ce calculateur ?</h3>
+        <p>Non. Vous saisissez vous-même les montants. Le calcul se fait dans votre navigateur : aucune somme n’est envoyée ni enregistrée.</p>
+        <h3>Pocklune se connecte-t-il à mon compte bancaire ?</h3>
+        <p>Non. Pocklune ne demande aucun identifiant bancaire et n’utilise aucun agrégateur. Vous saisissez vos revenus, charges et dépenses, ou importez un relevé que vous choisissez.</p>
+        <h3>Pocklune est-il gratuit ?</h3>
+        <p>Oui, le cœur du budget est gratuit : budget mensuel, reste à dépenser, catégories et import/export manuel. Des abonnements optionnels existent (Plus à 59,99 €/an, Premium IA à 12,99 €/mois ou 99,99 €/an, prix France TTC) ; le prix exact est affiché par l’App Store ou Google Play avant tout paiement.</p>
+        <h3>Où sont stockées mes données de budget ?</h3>
+        <p>Les montants, reçus et photos du budget restent sur votre téléphone. Le compte sert uniquement à la connexion et aux abonnements. Pocklune n’affiche aucune publicité et ne vend pas vos données.</p>
+        <h3>Sur quels appareils fonctionne Pocklune ?</h3>
+        <p>Sur iPhone (App Store) et Android (Google Play), en français, anglais et espagnol.</p>
+        <p>Pour suivre ce reste au jour le jour, installez Pocklune :</p>
+        <div class="store-buttons">
+            <a class="store-button" href="https://apps.apple.com/fr/app/id6807771884" data-analytics-event="app_store_click" data-analytics-placement="calculator_faq"><span class="store-small">Télécharger dans l’</span><span class="store-big">App Store</span></a>
+            <a class="store-button" href="https://play.google.com/store/apps/details?id=com.pocklune.app&amp;utm_source=pocklune_site&amp;utm_medium=seo_tool&amp;utm_campaign=calcul_reste_a_depenser" data-analytics-event="play_store_click" data-analytics-placement="calculator_faq"><span class="store-small">Disponible sur</span><span class="store-big">Google Play</span></a>
+          </div>
       </div>
     </section>
   </main>
