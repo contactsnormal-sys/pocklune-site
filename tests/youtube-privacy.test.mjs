@@ -13,8 +13,10 @@ const requiredLinks = [
 // Régressions visées : ancre introuvable, information non cliquable,
 // lien de chaîne erroné ou lecteur intégré à la place des liens simples.
 for (const [file, heading, date] of [
-  ['privacy.html', 'Services API YouTube', 'mise à jour : 26 octobre 2026'],
-  ['privacy-en.html', 'YouTube API Services', 'updated 26 October 2026'],
+  // Date de mise à jour : vraie date, ou marqueur {{DATE_PUBLICATION}} à remplacer
+  // le jour de la publication (voir PUBLICATION.md).
+  ['privacy.html', 'Services API YouTube', /mise à jour : (?:\d{1,2} [a-zéû]+ \d{4}|\{\{DATE_PUBLICATION\}\})/],
+  ['privacy-en.html', 'YouTube API Services', /updated (?:\d{1,2} [A-Z][a-z]+ \d{4}|\{\{DATE_PUBLICATION\}\})/],
 ]) {
   test(`${file} : section YouTube accessible et liens obligatoires cliquables`, () => {
     const html = read(file);
@@ -25,7 +27,7 @@ for (const [file, heading, date] of [
     const links = [...section[1].matchAll(/<a\s[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
     assert.deepEqual(links.map((link) => link[1]).sort(), [...requiredLinks].sort());
     assert.ok(links.every((link) => link[2].trim().length > 0));
-    assert.ok(html.includes(date));
+    assert.match(html, date);
     assert.doesNotMatch(section[1], /\b(?:I\u0041|A\u0049)\b|intelligence artificielle|[\u20ac\u0024]|\bE\u0055R\b|\d+[.,]\d{2}/i);
   });
 }
@@ -53,3 +55,11 @@ for (const [file, primary, privacy, label, navLabel] of [
     assert.doesNotMatch(html, /<iframe\b/i);
   });
 }
+
+// Contrôle de publication : POCKLUNE_PUBLICATION=1 node --test tests/*.mjs
+// doit échouer tant qu'un marqueur {{DATE_PUBLICATION}} reste dans une page.
+test('publication : aucune date de mise à jour laissée en marqueur', { skip: process.env.POCKLUNE_PUBLICATION !== '1' }, () => {
+  for (const file of ['privacy.html', 'privacy-en.html']) {
+    assert.ok(!read(file).includes('{{DATE_PUBLICATION}}'), `${file} : remplacer {{DATE_PUBLICATION}} par la vraie date`);
+  }
+});
