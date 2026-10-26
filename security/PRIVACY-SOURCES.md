@@ -1,6 +1,6 @@
 # Confidentialité — vérification locale du 16 octobre 2026
 
-Source app : C:/CodexBuilds/Pocklune-sec-npm, branche security/npm-audit-20261015. Aucun appel aux services du produit.
+Source app : dépôt de l’application Pocklune, branche security/npm-audit-20261015. Aucun appel aux services du produit.
 
 | Flux retenu | Preuve source |
 |---|---|
