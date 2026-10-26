@@ -48,7 +48,7 @@ for (const [file, primary, privacy, label, navLabel] of [
       'https://www.youtube.com/@PocklunePresupuesto',
     ].sort());
     assert.ok(links.every((link) => /rel="noopener"/.test(link[1])));
-    assert.ok(links.some((link) => link[2].endsWith('@PocklunePresupuesto') && link[3] === 'Español'));
+    assert.ok(links.some((link) => link[2].endsWith('@PocklunePresupuesto') && link[3] === 'YouTube en español'));
     assert.equal([...footer.matchAll(/<a\s[^>]*href="([^"]+)"/g)].filter((link) => link[1] === privacy).length, 1);
     assert.doesNotMatch(html, /<iframe\b/i);
   });
