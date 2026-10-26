@@ -1,6 +1,6 @@
 # Pocklune
 
-> Pocklune ("Pocklune : Budget privé") is a private budgeting app for iPhone and Android, published in Paris, France. It shows each day how much you really have left to spend this month, and why. It works without connecting a bank account and shows no advertising.
+> Pocklune ("Pocklune : Budget enveloppes" in French / "Pocklune: Envelope Budget" in English) is a private budgeting app for iPhone and Android, published in Paris, France. It shows each day how much you really have left to spend this month, and why. It works without connecting a bank account and shows no advertising.
 
 Key facts:
 - No bank connection: no bank credentials, no aggregator. Users type income, bills and expenses, or import a statement they choose.
@@ -19,6 +19,9 @@ Key facts:
 ## Pages
 - [Home (French)](https://contactsnormal-sys.github.io/pocklune-site/): overview
 - [Home (English)](https://contactsnormal-sys.github.io/pocklune-site/en.html): overview in English
+- [Application de budget sans connexion bancaire (French)](https://contactsnormal-sys.github.io/pocklune-site/application-budget-sans-connexion-bancaire.html): questions and answers in French
+- [Envelope budget app with no bank link (English)](https://contactsnormal-sys.github.io/pocklune-site/envelope-budget-app-no-bank-link.html): questions and answers in English
+- [App de presupuesto sin banco (Spanish)](https://contactsnormal-sys.github.io/pocklune-site/app-presupuesto-sin-banco.html): first Spanish page, with questions and answers in Spanish
 - [Pricing](https://contactsnormal-sys.github.io/pocklune-site/pricing.html): Free, Plus and Premium plans
 - [Free "left to spend" calculator](https://contactsnormal-sys.github.io/pocklune-site/calcul-reste-a-depenser.html): works in the browser, no sign-up
 - [Security](https://contactsnormal-sys.github.io/pocklune-site/security.html)

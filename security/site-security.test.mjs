@@ -33,6 +33,11 @@ test('every HTML entry applies restrictive CSP and referrer policy before loadin
     if (html.includes('<script')) assert.ok(html.indexOf(meta[0]) < html.indexOf('<script'), page);
     assert.doesNotMatch(html, /<style|\sstyle=|\son\w+=/i, page);
     for (const script of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
+      if (script[1].trim() === 'type="application/ld+json"') {
+        const data = JSON.parse(script[2]);
+        assert.equal(data['@context'], 'https://schema.org', page);
+        continue; // Données structurées non exécutables ; la CSP reste inchangée.
+      }
       assert.match(script[1], /src="\.\//, page);
       assert.equal(script[2].trim(), '', page);
     }
