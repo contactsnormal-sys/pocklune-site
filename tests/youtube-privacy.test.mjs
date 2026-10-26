@@ -57,9 +57,14 @@ for (const [file, primary, privacy, label, navLabel] of [
 }
 
 // Contrôle de publication : POCKLUNE_PUBLICATION=1 node --test tests/*.mjs
-// doit échouer tant qu'un marqueur {{DATE_PUBLICATION}} reste dans une page.
+// doit échouer tant qu'un marqueur {{DATE_PUBLICATION}} ou un commentaire
+// « À REMPLACER » / « REPLACE on publication day » reste dans le code source.
+const PUBLICATION_MARKERS = ['{{DATE_PUBLICATION}}', 'À REMPLACER', 'REPLACE on publication day'];
 test('publication : aucune date de mise à jour laissée en marqueur', { skip: process.env.POCKLUNE_PUBLICATION !== '1' }, () => {
   for (const file of ['privacy.html', 'privacy-en.html']) {
-    assert.ok(!read(file).includes('{{DATE_PUBLICATION}}'), `${file} : remplacer {{DATE_PUBLICATION}} par la vraie date`);
+    const html = read(file);
+    for (const marker of PUBLICATION_MARKERS) {
+      assert.ok(!html.includes(marker), `${file} : retirer « ${marker} » et mettre la vraie date`);
+    }
   }
 });
