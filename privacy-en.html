@@ -26,21 +26,23 @@
         <li>Sending the deep analysis request (Premium) to OpenAI: consent (GDPR Art. 6(1)(a)), asked in the app before the first request. You can withdraw it at any time in Settings › Language and communications › Sharing for deep analysis; no request is sent after that. Declining or withdrawing does not prevent you from using the rest of the app.</li>
         <li>Securing the service, preventing abuse, rate-limiting AI calls: legitimate interest (Art. 6(1)(f)), limited to identifiers, counters and technical data, with a right to object.</li>
         <li>Complying with legal obligations and handling GDPR requests: legal obligation (Art. 6(1)(c)).</li>
-        <li>Optional tips and offers by email, and website audience measurement and ad tags: consent (Art. 6(1)(a)), which you can withdraw at any time.</li>
+        <li>Website audience measurement and ad tags: consent (Art. 6(1)(a)), which you can withdraw at any time.</li>
       </ul>
       <p>Pocklune does no advertising profiling based on your budget and no fully automated decision with legal effects.</p>
       <h2>Data minimisation</h2>
-      <p>Amounts, budgets, expenses, receipts, photos, CSV/OFX/QFX imports and financial notes are stored only on your device in this version. Server data is limited to what is needed to sign in and restore subscriptions.</p>
+      <p>Amounts, budgets, expenses, receipts, photos, CSV/OFX/QFX imports and financial notes are stored only on your device in this version. Data sent to services is limited to the features you use: optional account and profile, purchases and restoration, support and Premium deep analysis with your consent.</p>
       <h2>Pocklune account</h2>
-      <p>You sign in with Google (Android) or Apple (iPhone) through Supabase; Pocklune never receives your password. We receive your account ID, email address (or Apple private relay) and, if provided, display name and profile picture URL. Your profile may also contain the first name, optional last name, country or region and household size you enter, your language, how you heard about Pocklune, reminder preferences, consent choices, and the version and time you accepted the terms and acknowledged this policy.</p>
-      <h2>Tips and offers by email</h2>
-      <p>Optional, unticked by default, recorded with date and version, and withdrawable at any time in the Account section of the app. Your amounts, budgets, receipts or documents are never used to target these messages.</p>
+      <p>After the initial questions, you can choose “Continue without an account”: your budget stays stored on your device. A Pocklune account is optional. Plus and Premium offers, purchases and purchase restoration are available without an account.</p>
+      <p>Without a Pocklune account, RevenueCat assigns an anonymous purchase identifier, managed by its SDK, to recognise subscription entitlements. If you sign in later, the app calls <code>logIn</code> with your account identifier to link purchases under RevenueCat's rules. Signing out of Pocklune preserves local data and does not reset this purchase identity; entitlements remain verified with the purchase service.</p>
+      <p>The account lets you sync your profile and legal acceptances, use the support form and, with a verified Premium entitlement and your consent, request remote deep analysis. It does not back up your budget to a server in this version. You sign in with Google (Android) or Apple (iPhone) through Supabase; Pocklune never receives your password.</p>
+      <p>Only if you create or connect an account, we receive your account ID, email address (or Apple private relay) and, if provided, display name and profile picture URL. Your profile may also contain the first name, optional last name, country or region and household size you enter, your language, how you heard about Pocklune, reminder preferences, and the version and time you accepted the terms and acknowledged this policy.</p>
+      <p>Security, account confirmation, transaction and contractual notices may still require strictly necessary emails; these are not advertising messages.</p>
       <h2>Support form</h2>
       <p>When signed in, you can send a support request. We store your user ID, first name, last name, subject, message, language, date, status and an expiry date (planned 24 months). Limited to five requests per hour. Do not include passwords, card numbers or financial documents.</p>
       <h2>Local statement import</h2>
       <p>A CSV, OFX or QFX file you pick is read and analysed on your device only; nothing from it is sent to us or any third party.</p>
       <h2>No tracking, no ads in the app</h2>
-      <p>The app contains no ad network, no tracker, no advertising identifier and no third-party analytics tool. We do not sell personal data or track you across other companies’ apps or websites.</p>
+      <p>The app contains no ad network, no tracker, no advertising identifier and no audience measurement or usage analytics tool in the app. The app sends no usage data to a measurement tool. We do not sell personal data or track you across other companies’ apps or websites.</p>
       <h2>Website analytics</h2>
       <p>This public website may load Google Analytics 4, Google Tag Manager and Google Ads measurement tags only after your explicit consent (refused by default). You can change your choice with the “Confidentialité du site” button. No budget or account content is ever sent.</p>
       <h2>Voice input</h2>
@@ -52,7 +54,7 @@
       <h2>Recipients and international transfers</h2>
       <ul>
         <li><strong>Supabase</strong> (authentication, profile, consents, support, AI quotas). Standard contractual clauses (SCCs); the project region is not certified here as EU-only.</li>
-        <li><strong>RevenueCat</strong> (Pocklune ID, products, purchase receipts, transactions, entitlements, device technical data). Hosted on AWS in the United States; SCCs.</li>
+        <li><strong>RevenueCat</strong> (SDK-managed anonymous purchase identifier without a Pocklune account, or account identifier after sign-in, products, purchase receipts, transactions, entitlements, device technical data). Hosted on AWS in the United States; SCCs.</li>
         <li><strong>OpenAI</strong> (category signals and pseudonymous ID for Deep analysis, a Premium feature). Under the DPA, OpenAI may process the data in the United States, under the European Commission’s standard contractual clauses (SCCs), or in a country covered by a Commission adequacy decision.</li>
         <li><strong>Google</strong> and <strong>Apple</strong> (sign-in and store purchases, as independent controllers); Google LLC participates in the EU–US Data Privacy Framework.</li>
         <li><strong>GitHub Pages</strong> (website hosting only; IP addresses and technical logs, possibly in the United States).</li>
@@ -61,7 +63,6 @@
       <ul>
         <li>Local budget data: until you delete it or uninstall the app.</li>
         <li>Account, profile and consents: for the life of the account, then deletion on request (legal evidence may be kept separately).</li>
-        <li>Marketing: until consent is withdrawn or the account is deleted.</li>
         <li>Support: up to 24 months.</li>
         <li>Purchases: as long as needed for subscriptions, refunds and disputes.</li>
         <li>AI: answer shown in the session; technical counters kept to enforce limits.</li>
