@@ -41,4 +41,18 @@ for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en'
     const heading = language === 'fr' ? "Mesure d'audience et publicité du site public" : 'Website analytics';
     assert.equal(section(html, heading), section(before, heading));
   });
+  test(`${page} : aucune photo de profil dans les données reçues`, () => {
+    assert.equal(/photo de profil|profile picture/i.test(read(page)), false);
+  });
+  test(`${page} : reconnaissance système, repli réseau et indices d'enveloppes explicites`, () => {
+    const voice = section(read(page), language === 'fr' ? 'Saisie vocale facultative' : 'Voice input');
+    assert.ok(voice);
+    for (const pattern of (language === 'fr' ? [
+      /service de reconnaissance vocale du système/, /langue.*installée/, /Apple ou de Google/,
+      /noms de vos enveloppes.*indices/, /ne reçoit ni ne conserve aucun audio/,
+    ] : [
+      /system speech recognition service/, /language.*installed/, /Apple or Google/,
+      /envelope names.*hints/, /neither receives nor retains any audio/,
+    ])) assert.equal(pattern.test(voice), true, `Information vocale manquante : ${pattern}`);
+  });
 }
