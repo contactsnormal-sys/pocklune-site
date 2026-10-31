@@ -61,7 +61,7 @@ for (const [file, primary, privacy, label, navLabel] of [
 // « À REMPLACER » / « REPLACE on publication day » reste dans le code source.
 const PUBLICATION_MARKERS = ['{{DATE_PUBLICATION}}', 'À REMPLACER', 'REPLACE on publication day'];
 test('publication : aucune date de mise à jour laissée en marqueur', { skip: process.env.POCKLUNE_PUBLICATION !== '1' }, () => {
-  for (const file of ['privacy.html', 'privacy-en.html']) {
+  for (const file of ['privacy.html', 'privacy-en.html', 'account-deletion.html']) {
     const html = read(file);
     for (const marker of PUBLICATION_MARKERS) {
       assert.ok(!html.includes(marker), `${file} : retirer « ${marker} » et mettre la vraie date`);

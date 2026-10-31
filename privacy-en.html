@@ -35,7 +35,7 @@
       <p>After the initial questions, you can choose “Continue without an account”: your budget stays stored on your device. A Pocklune account is optional. Plus and Premium offers, purchases and purchase restoration are available without an account.</p>
       <p>Without a Pocklune account, RevenueCat assigns an anonymous purchase identifier, managed by its SDK, to recognise subscription entitlements. If you sign in later, the app calls <code>logIn</code> with your account identifier to link purchases under RevenueCat's rules. Signing out of Pocklune preserves local data and does not reset this purchase identity; entitlements remain verified with the purchase service.</p>
       <p>The account lets you sync your profile and legal acceptances, use the support form and, with a verified Premium entitlement and your consent, request remote deep analysis. It does not back up your budget to a server in this version. You sign in with Google (Android) or Apple (iPhone) through Supabase; Pocklune never receives your password.</p>
-      <p>Only if you create or connect an account, we receive your account ID, email address (or Apple private relay) and, if provided, display name. Your profile may also contain the first name, optional last name, country or region and household size you enter, your language, how you heard about Pocklune, reminder preferences, and the version and time you accepted the terms and acknowledged this policy.</p>
+      <p>Only if you create or connect an account, we receive your account ID, email address (or Apple private relay) and, if provided, the display name and, for Google, the profile picture link, kept by the authentication service and not used by Pocklune. Your profile may also contain the first name, optional last name, country or region and household size you enter, your language, how you heard about Pocklune, reminder preferences, and the version and time you accepted the terms and acknowledged this policy.</p>
       <p>Security, account confirmation, transaction and contractual notices may still require strictly necessary emails; these are not advertising messages.</p>
       <h2>Support form</h2>
       <p>When signed in, you can send a support request. We store your user ID, first name, last name, subject, message, language, date, status and an expiry date (planned 24 months). Limited to five requests per hour. Do not include passwords, card numbers or financial documents.</p>
@@ -61,6 +61,7 @@
         <li><strong>GitHub Pages</strong> (website hosting only; IP addresses and technical logs, possibly in the United States).</li>
       </ul>
       <h2>Retention</h2>
+      <p>Purchases and subscriptions are managed by the App Store or Google Play and by our payment provider RevenueCat; to request their deletion, email <a href="mailto:contact@2jagency.com">contact@2jagency.com</a> from the account address before deleting the account.</p>
       <ul>
         <li>Local budget data: until you delete it or uninstall the app.</li>
         <li>Account, profile and consents: for the life of the account, then deletion on request (legal evidence may be kept separately).</li>

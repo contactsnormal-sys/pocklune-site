@@ -41,8 +41,19 @@ for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en'
     const heading = language === 'fr' ? "Mesure d'audience et publicité du site public" : 'Website analytics';
     assert.equal(section(html, heading), section(before, heading));
   });
-  test(`${page} : aucune photo de profil dans les données reçues`, () => {
-    assert.equal(/photo de profil|profile picture/i.test(read(page)), false);
+  test(`${page} : photo Google limitée au service d'authentification et inutilisée par Pocklune`, () => {
+    const html = read(page);
+    const precise = language === 'fr'
+      ? "et, s'ils sont fournis, le nom d'affichage et, pour Google, le lien vers la photo de profil, conservé par le service d'authentification et non utilisé par Pocklune"
+      : 'and, if provided, the display name and, for Google, the profile picture link, kept by the authentication service and not used by Pocklune';
+    assert.equal(html.split(precise).length, 2);
+    assert.doesNotMatch(html.replace(precise, ''), /photo de profil|profile picture/i);
+  });
+  test(`${page} : demande d'effacement des achats avant suppression, sans promesse automatique`, () => {
+    const html = read(page).replace(/<[^>]+>/g, '');
+    assert.ok(html.includes(language === 'fr'
+      ? "Les achats et abonnements sont gérés par l'App Store ou Google Play et par notre prestataire de paiement RevenueCat ; pour en demander l'effacement, écrivez à contact@2jagency.com depuis l'adresse du compte avant de supprimer le compte."
+      : 'Purchases and subscriptions are managed by the App Store or Google Play and by our payment provider RevenueCat; to request their deletion, email contact@2jagency.com from the account address before deleting the account.'));
   });
   test(`${page} : reconnaissance système, repli réseau et indices d'enveloppes explicites`, () => {
     const voice = section(read(page), language === 'fr' ? 'Saisie vocale facultative' : 'Voice input');
@@ -56,3 +67,36 @@ for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en'
     ])) assert.equal(pattern.test(voice), true, `Information vocale manquante : ${pattern}`);
   });
 }
+
+test('suppression : parcours exact, version, marqueur et commentaire de publication', () => {
+  const html = read('account-deletion.html');
+  const text = html.replace(/<[^>]+>/g, '');
+  assert.match(text, /Version 1\.0\.190/);
+  assert.ok(text.includes("ouvrez l'onglet Profil › Sécurité et données › Supprimer le compte, saisissez SUPPRIMER, puis touchez Demander la suppression"));
+  assert.ok(text.includes('Profile tab › Security and data › Delete account'));
+  assert.match(text, /mise à jour : \{\{DATE_PUBLICATION\}\}/);
+  assert.equal(html.match(/<!-- À REMPLACER[\s\S]*?-->/)?.[0], read('privacy.html').match(/<!-- À REMPLACER[\s\S]*?-->/)?.[0]);
+  assert.match(read('tests/youtube-privacy.test.mjs'), /\['privacy\.html', 'privacy-en\.html', 'account-deletion\.html'\]/);
+});
+
+test('suppression : données annoncées et budget conservé uniquement sur l’appareil', () => {
+  const text = read('account-deletion.html').replace(/<[^>]+>/g, '');
+  for (const value of ['identifiants de connexion', 'prénom', 'nom', 'pays', 'taille du foyer', 'préférences', 'acceptations légales', "demandes d'assistance", "compteurs d'analyse approfondie", 'budget reste sur votre appareil', 'désinstallant']) assert.ok(text.includes(value), value);
+  assert.doesNotMatch(text, /snapshot|sauvegarde(?:s)? serveur/i);
+});
+
+test('suppression : RevenueCat, contact avant suppression et prévention des abus explicités', () => {
+  const text = read('account-deletion.html').replace(/<[^>]+>/g, '');
+  assert.ok(text.includes("Les achats et abonnements sont gérés par l'App Store ou Google Play et par notre prestataire de paiement RevenueCat ; pour en demander l'effacement, écrivez à contact@2jagency.com depuis l'adresse du compte avant de supprimer le compte."));
+  assert.ok(text.includes("OpenAI peut conserver une demande d'analyse approfondie jusqu'à 30 jours pour prévenir les abus."));
+  assert.match(text, /depuis l'adresse du compte/);
+  assert.doesNotMatch(text, /délai raisonnable|automatically delete|effacement automatique/i);
+});
+
+test('suppression : structure de sécurité et ressources conservées', () => {
+  const html = read('account-deletion.html');
+  const before = baseline('account-deletion.html');
+  for (const pattern of [/<meta http-equiv="Content-Security-Policy"[^>]*>/, /<meta name="referrer"[^>]*>/, /<script defer[^>]*><\/script>/]) assert.equal(html.match(pattern)?.[0], before.match(pattern)?.[0]);
+  for (const link of before.matchAll(/href="([^"]+)"/g)) assert.ok(html.includes(`href="${link[1]}"`), link[1]);
+  assert.doesNotMatch(html, /[�]|derniere|Donnees|Delai|supprimees|associee|donnees financieres/);
+});
