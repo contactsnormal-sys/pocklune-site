@@ -67,11 +67,12 @@ test('privacy covers purposes, legal bases, retention, rights and sourced transf
   assert.match(privacy, /ne constitue pas[\s\S]*preuve de purge automatique/);
 });
 
-test('support and legal phone are callable, GitHub address is sourced, public pages omit beta distribution', async () => {
-  for (const name of ['support.html', 'legal-notice.html']) {
+test('legal phone is callable only in legal notices, GitHub address is sourced, public pages omit beta distribution', async () => {
+  for (const name of ['legal-notice.html']) {
     const html = await read(name);
     assert.match(html, /href="tel:\contact@2jagency.com">contact@2jagency.com<\/a>/, name);
   }
+  for (const page of await htmlPages()) if (!page.startsWith('legal-notice')) assert.doesNotMatch(await read(page), /81\s?12\s?21\s?53|tel:/, page);
   const legal = await read('legal-notice.html');
   assert.match(legal, /88 Colin P\. Kelly Jr\. St\., San Francisco, CA 94107/);
   assert.match(legal, /href="https:\/\/docs\.github\.com\/en\/site-policy\/privacy-policies\/github-general-privacy-statement#contact-us"/);
