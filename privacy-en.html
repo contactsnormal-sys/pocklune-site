@@ -14,8 +14,7 @@
 <body>
   <header class="site-header"><nav class="nav shell" aria-label="Main navigation"><a class="brand" href="./en.html"><img src="./assets/pocklune-mark.png" alt="">Pocklune</a><div class="nav-links"><a href="./privacy-en.html">Privacy</a><a href="./legal-notice-en.html">Legal notice</a><a href="./support.html" lang="fr">Help (FR)</a></div></nav></header>
   <main>
-    <!-- REPLACE on publication day with the real date (e.g. "3 November 2026"): see PUBLICATION.md -->
-    <section class="page-hero shell"><p class="eyebrow">Privacy policy — updated {{DATE_PUBLICATION}}</p><h1>Your budget stays yours.</h1><p class="lead">English translation. The French version is the legal reference text: <a href="./privacy.html" lang="fr">Politique de confidentialité</a>.</p></section>
+    <section class="page-hero shell"><p class="eyebrow">Privacy policy — updated 3 November 2026</p><h1>Your budget stays yours.</h1><p class="lead">English translation. The French version is the legal reference text: <a href="./privacy.html" lang="fr">Politique de confidentialité</a>.</p></section>
     <section class="section"><div class="shell">
       <h2>Data controller</h2>
       <p><strong>2J LAMBRE</strong>, SASU, 10 rue de Penthièvre, 75008 Paris, France. Privacy contact and rights requests: <a href="mailto:contact@2jagency.com">contact@2jagency.com</a> (no account needed).</p>
@@ -24,7 +23,7 @@
         <li>Providing the local budget, account, sign-in and subscription entitlements: performance of contract (Art. 6(1)(b)).</li>
         <li>Answering support requests: performance of contract (Art. 6(1)(b)).</li>
         <li>Sending the deep analysis request (Premium) to OpenAI: consent (GDPR Art. 6(1)(a)), asked in the app before the first request. You can withdraw it at any time in Settings › Language and communications › Sharing for deep analysis; no request is sent after that. Declining or withdrawing does not prevent you from using the rest of the app.</li>
-        <li>Securing the service, preventing abuse, rate-limiting AI calls: legitimate interest (Art. 6(1)(f)), limited to identifiers, counters and technical data, with a right to object.</li>
+        <li>Securing the service, preventing abuse, rate-limiting deep analysis calls: legitimate interest (Art. 6(1)(f)), limited to identifiers, counters and technical data, with a right to object.</li>
         <li>Complying with legal obligations and handling GDPR requests: legal obligation (Art. 6(1)(c)).</li>
         <li>Website audience measurement and ad tags: consent (Art. 6(1)(a)), which you can withdraw at any time.</li>
       </ul>
@@ -54,9 +53,10 @@
       <p>Pocklune offers Free, Plus and Premium (with deep analysis). Purchases, trials and subscriptions are handled by the App Store or Google Play, with RevenueCat synchronising entitlements and purchase history. Pocklune never asks for or stores your card number.</p>
       <h2>Recipients and international transfers</h2>
       <ul>
-        <li><strong>Supabase</strong> (authentication, profile, consents, support, AI quotas). Standard contractual clauses (SCCs); the project region is not certified here as EU-only.</li>
+        <li><strong>Supabase</strong> (authentication, profile, consents, support, deep analysis quotas). Standard contractual clauses (SCCs); the project region is not certified here as EU-only.</li>
         <li><strong>RevenueCat</strong> (SDK-managed anonymous purchase identifier without a Pocklune account, or account identifier after sign-in, products, purchase receipts, transactions, entitlements, device technical data). Hosted on AWS in the United States; SCCs.</li>
         <li><strong>OpenAI</strong> (category signals and pseudonymous ID for Deep analysis, a Premium feature). Under the DPA, OpenAI may process the data in the United States, under the European Commission’s standard contractual clauses (SCCs), or in a country covered by a Commission adequacy decision.</li>
+        <li><strong>Currency converter</strong> (Exchange Rate API, open.er-api.com, and the European Central Bank): only if you use the converter, the app requests reference rates; only the requested currency code and the connection’s technical IP address reach them. No account or budget data is sent.</li>
         <li><strong>Google</strong> and <strong>Apple</strong> (sign-in and store purchases, as independent controllers); Google LLC participates in the EU–US Data Privacy Framework.</li>
         <li><strong>GitHub Pages</strong> (website hosting only; IP addresses and technical logs, possibly in the United States).</li>
       </ul>
@@ -67,7 +67,7 @@
         <li>Account, profile and consents: for the life of the account, then deletion on request (legal evidence may be kept separately).</li>
         <li>Support: up to 24 months.</li>
         <li>Purchases: as long as needed for subscriptions, refunds and disputes.</li>
-        <li>AI: answer shown in the session; technical counters kept to enforce limits.</li>
+        <li>Deep analysis: answer shown in the session; technical counters kept to enforce limits.</li>
       </ul>
       <section id="youtube-api">
         <h2>YouTube API Services</h2>

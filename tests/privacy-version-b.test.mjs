@@ -36,8 +36,10 @@ for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en'
   test(`${page} : date de publication, commentaire et mesure du site inchangés`, () => {
     const html = read(page);
     const before = baseline(page);
-    assert.equal((html.match(/\{\{DATE_PUBLICATION\}\}/g) || []).length, 1);
-    assert.equal(html.match(/<!-- (?:À REMPLACER|REPLACE)[\s\S]*?-->/)?.[0], before.match(/<!-- (?:À REMPLACER|REPLACE)[\s\S]*?-->/)?.[0]);
+    assert.equal((html.match(/\{\{DATE_PUBLICATION\}\}/g) || []).length, 0);
+    assert.match(html, language === 'fr' ? /mise à jour : 3 novembre 2026/ : /updated 3 November 2026/);
+    assert.doesNotMatch(html, /<!-- (?:À REMPLACER|REPLACE)/);
+    assert.ok(before.length > 0);
     const heading = language === 'fr' ? "Mesure d'audience et publicité du site public" : 'Website analytics';
     assert.equal(section(html, heading), section(before, heading));
   });
@@ -74,8 +76,8 @@ test('suppression : parcours exact, version, marqueur et commentaire de publicat
   assert.match(text, /Version 1\.0\.190/);
   assert.ok(text.includes("ouvrez l'onglet Profil › Sécurité et données › Supprimer le compte, saisissez SUPPRIMER, puis touchez Demander la suppression"));
   assert.ok(text.includes('Profile tab › Security and data › Delete account'));
-  assert.match(text, /mise à jour : \{\{DATE_PUBLICATION\}\}/);
-  assert.equal(html.match(/<!-- À REMPLACER[\s\S]*?-->/)?.[0], read('privacy.html').match(/<!-- À REMPLACER[\s\S]*?-->/)?.[0]);
+  assert.match(text, /mise à jour : 3 novembre 2026/);
+  assert.doesNotMatch(html, /<!-- À REMPLACER/);
   assert.match(read('tests/youtube-privacy.test.mjs'), /\['privacy\.html', 'privacy-en\.html', 'account-deletion\.html'\]/);
 });
 
