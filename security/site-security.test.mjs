@@ -49,7 +49,7 @@ test('every HTML entry applies restrictive CSP and referrer policy before loadin
 
 test('legal publisher data and RGPD email are present without requiring authentication', async () => {
   const legal = await read('legal-notice.html');
-  for (const value of ['2J LAMBRE', 'SASU', '5 000 EUR', 'RCS Paris', '837 878 925', 'FR30837878925', '10 rue de Penthièvre, 75008 Paris', 'Jocelyn LAMBRE', 'contact@2jagency.com', 'mailto:contact@2jagency.com', 'GitHub, Inc.']) assert.ok(legal.includes(value), value);
+  for (const value of ['2J LAMBRE', 'SASU', '5 000 EUR', 'RCS Paris', '837 878 925', 'FR30837878925', '10 rue de Penthièvre, 75008 Paris', 'Jocelyn LAMBRE', 'mailto:contact@2jagency.com', 'GitHub, Inc.']) assert.ok(legal.includes(value), value);
   const privacy = await read('privacy.html');
   assert.match(privacy, /Exercice de vos droits RGPD/);
   assert.match(privacy, /mailto:contact@2jagency\.com/);
@@ -67,12 +67,10 @@ test('privacy covers purposes, legal bases, retention, rights and sourced transf
   assert.match(privacy, /ne constitue pas[\s\S]*preuve de purge automatique/);
 });
 
-test('legal phone is callable only in legal notices, GitHub address is sourced, public pages omit beta distribution', async () => {
-  for (const name of ['legal-notice.html']) {
-    const html = await read(name);
-    assert.match(html, /href="tel:\contact@2jagency.com">contact@2jagency.com<\/a>/, name);
-  }
-  for (const page of await htmlPages()) if (!page.startsWith('legal-notice')) assert.doesNotMatch(await read(page), /81\s?12\s?21\s?53|tel:/, page);
+test('no phone number or tel: link on any public page (legal notices included), GitHub address is sourced, public pages omit beta distribution', async () => {
+  for (const page of await htmlPages()) assert.doesNotMatch(await read(page), /(?:\+33|0033|\b0)\s?[67](?:[\s.-]?\d{2}){4}\b|tel:/, page);
+  assert.match(await read('legal-notice.html'), /Contact : <a href="mailto:contact@2jagency\.com">/);
+  assert.match(await read('legal-notice-en.html'), /Contact: <a href="mailto:contact@2jagency\.com">/);
   const legal = await read('legal-notice.html');
   assert.match(legal, /88 Colin P\. Kelly Jr\. St\., San Francisco, CA 94107/);
   assert.match(legal, /href="https:\/\/docs\.github\.com\/en\/site-policy\/privacy-policies\/github-general-privacy-statement#contact-us"/);
