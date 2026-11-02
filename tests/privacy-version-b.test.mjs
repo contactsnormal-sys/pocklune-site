@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 
 const read = name => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
-const baseline = name => execFileSync('git', ['show', `514279528cd350edfd465cce4683ea0a46421778:${name}`], { encoding: 'utf8' });
+const baseline = name => execFileSync('git', ['show', `229fdf499b34677423510be178bd5f1077781413:${name}`], { encoding: 'utf8' });
 const section = (html, heading) => html.split(`<h2>${heading}</h2>`)[1]?.split('<h2>')[0];
 
 for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en']]) {
