@@ -15,6 +15,7 @@ Key facts:
 - [Google Play](https://play.google.com/store/apps/details?id=com.pocklune.app): Android
 
 ## Pages
+- [Budget enveloppes sans banque](https://contactsnormal-sys.github.io/pocklune-site/budget-enveloppes-sans-banque.html): cash stuffing / envelope budget without bank link (French)
 - [Home (French)](https://contactsnormal-sys.github.io/pocklune-site/): overview
 - [Home (English)](https://contactsnormal-sys.github.io/pocklune-site/en.html): overview in English
 - [Application de budget sans connexion bancaire (French)](https://contactsnormal-sys.github.io/pocklune-site/application-budget-sans-connexion-bancaire.html): questions and answers in French
