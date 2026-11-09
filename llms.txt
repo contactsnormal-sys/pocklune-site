@@ -4,7 +4,7 @@
 
 Key facts:
 - No bank connection: no bank credentials, no aggregator. Users type income, bills and expenses, or import a statement they choose.
-- Budget data (amounts, receipts, photos) is stored on the phone. The account is used only for sign-in and subscriptions.
+- Budget data (amounts, receipts, photos) is stored on the phone. The account is optional: you can use Pocklune and subscribe without one; Apple or Google sign-in is for profile, support and Premium deep analysis.
 - No advertising and no advertising trackers in the app. Data is never sold.
 - Free plan: monthly budget, amount left to spend, categories, daily mission, manual import/export.
 - Prices vary by country; the exact price is shown by the App Store or Google Play before any payment. Subscriptions renew automatically and can be cancelled anytime from the Apple or Google account.
