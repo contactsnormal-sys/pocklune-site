@@ -8,11 +8,21 @@ const baseline = name => execFileSync('git', ['show', `438eb18b67036e9f24eb2b3d3
 const section = (html, heading) => html.split(`<h2>${heading}</h2>`)[1]?.split('<h2>')[0];
 
 for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en']]) {
-  test(`${page} : compte demandé à l’ouverture et budget local`, () => {
+  test(`${page} : compte selon plateforme (iPhone facultatif, Android demandé) et budget local`, () => {
     const html = read(page);
-    assert.match(html, language === 'fr' ? /compte Google ou Apple est demandé/ : /Google or Apple account is required/);
+    assert.match(html, language === 'fr'
+      ? /sur iPhone \(version 1\.0\.190 et suivantes\),\s*le compte est facultatif/
+      : /on iPhone \(version 1\.0\.190 and later\),\s*an account is optional/);
+    assert.match(html, language === 'fr'
+      ? /sur Android \(version actuelle\),\s*un compte Google est demandé/
+      : /on Android \(current version\),\s*a Google account is required/);
     assert.match(html, language === 'fr' ? /budget reste enregistré sur votre appareil/ : /budget stays stored on your device/);
-    assert.doesNotMatch(html, /Continuer sans compte|without an account|compte est facultatif|account is optional/i);
+    assert.doesNotMatch(html, /Continuer sans compte/i);
+    // "without an account" appears in the clarified RevenueCat sentence (EN) — allowed there only
+    assert.match(html, language === 'fr'
+      ? /identifiant d.achat anonyme.*RevenueCat/s
+      : /anonymous purchase identifier.*RevenueCat/s);
+    assert.doesNotMatch(html, /Android[^.]{0,80}(sans compte|without an account|compte est facultatif|account is optional)/i);
   });
   test(`${page} : aucun outil de mesure dans l'application`, () => {
     const html = read(page);
@@ -29,14 +39,14 @@ for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en'
     assert.match(html, /RevenueCat/);
     assert.match(html, language === 'fr' ? /identifiant anonyme d'achat/ : /anonymous purchase identifier/);
     assert.match(html, /logIn/);
-    assert.match(html, language === 'fr' ? /si vous créez ou connectez un compte/ : /if you create or connect an account/);
+    assert.match(html, language === 'fr' ? /si vous créez ou connectez un compte/ : /if you create or connect a Pocklune account/);
     assert.match(html, language === 'fr' ? /ne sauvegarde pas votre budget sur un serveur/ : /does not back up your budget to a server/);
   });
   test(`${page} : date de publication, commentaire et mesure du site inchangés`, () => {
     const html = read(page);
     const before = baseline(page);
     assert.equal((html.match(/\{\{DATE_PUBLICATION\}\}/g) || []).length, 0);
-    assert.match(html, language === 'fr' ? /mise à jour : 3 novembre 2026/ : /updated 3 November 2026/);
+    assert.match(html, language === 'fr' ? /mise à jour : 9 novembre 2026/ : /updated 9 November 2026/);
     assert.doesNotMatch(html, /<!-- (?:À REMPLACER|REPLACE)/);
     assert.ok(before.length > 0);
     const heading = language === 'fr' ? "Mesure d'audience et publicité du site public" : 'Website analytics';
