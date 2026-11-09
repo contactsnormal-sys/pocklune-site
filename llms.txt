@@ -24,7 +24,7 @@ Key facts:
 - [Pricing](https://contactsnormal-sys.github.io/pocklune-site/pricing.html): Free, Plus and Premium plans
 - [Free "left to spend" calculator](https://contactsnormal-sys.github.io/pocklune-site/calcul-reste-a-depenser.html): works in the browser, no sign-up
 - [Security](https://contactsnormal-sys.github.io/pocklune-site/security.html)
-- [Support](https://contactsnormal-sys.github.io/pocklune-site/support.html): contact@2jagency.com
+- [Support](https://contactsnormal-sys.github.io/pocklune-site/support.html): contactsnormal@gmail.com
 - [Privacy policy](https://contactsnormal-sys.github.io/pocklune-site/privacy.html)
 - [Terms](https://contactsnormal-sys.github.io/pocklune-site/terms.html)
 - [Legal notice](https://contactsnormal-sys.github.io/pocklune-site/legal-notice.html)
