@@ -1,4 +1,4 @@
-// Garde anti-numéro (règle permanente : aucun numéro de téléphone public, utiliser contact@2jagency.com).
+// Garde anti-numéro (règle permanente : aucun numéro de téléphone public, utiliser contactsnormal@gmail.com).
 // Échoue si un fichier suivi par git contient un numéro français mobile (06/07, +33, 0033) ou un lien d'appel.
 // Lancer : node security/no-phone-number.test.mjs (ou via la CI .github/workflows/site-checks.yml).
 import { test } from 'node:test';

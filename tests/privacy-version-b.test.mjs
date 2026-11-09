@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 
 const read = name => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
-const baseline = name => execFileSync('git', ['show', `229fdf499b34677423510be178bd5f1077781413:${name}`], { encoding: 'utf8' });
+const baseline = name => execFileSync('git', ['show', `438eb18b67036e9f24eb2b3d3bf4437be55ec021:${name}`], { encoding: 'utf8' });
 const section = (html, heading) => html.split(`<h2>${heading}</h2>`)[1]?.split('<h2>')[0];
 
 for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en']]) {
@@ -54,8 +54,8 @@ for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en'
   test(`${page} : demande d'effacement des achats avant suppression, sans promesse automatique`, () => {
     const html = read(page).replace(/<[^>]+>/g, '');
     assert.ok(html.includes(language === 'fr'
-      ? "Les achats et abonnements sont gérés par l'App Store ou Google Play et par notre prestataire de paiement RevenueCat ; pour en demander l'effacement, écrivez à contact@2jagency.com depuis l'adresse du compte avant de supprimer le compte."
-      : 'Purchases and subscriptions are managed by the App Store or Google Play and by our payment provider RevenueCat; to request their deletion, email contact@2jagency.com from the account address before deleting the account.'));
+      ? "Les achats et abonnements sont gérés par l'App Store ou Google Play et par notre prestataire de paiement RevenueCat ; pour en demander l'effacement, écrivez à contactsnormal@gmail.com depuis l'adresse du compte avant de supprimer le compte."
+      : 'Purchases and subscriptions are managed by the App Store or Google Play and by our payment provider RevenueCat; to request their deletion, email contactsnormal@gmail.com from the account address before deleting the account.'));
   });
   test(`${page} : reconnaissance système, repli réseau et indices d'enveloppes explicites`, () => {
     const voice = section(read(page), language === 'fr' ? 'Saisie vocale facultative' : 'Voice input');
@@ -89,7 +89,7 @@ test('suppression : données annoncées et budget conservé uniquement sur l’a
 
 test('suppression : RevenueCat, contact avant suppression et prévention des abus explicités', () => {
   const text = read('account-deletion.html').replace(/<[^>]+>/g, '');
-  assert.ok(text.includes("Les achats et abonnements sont gérés par l'App Store ou Google Play et par notre prestataire de paiement RevenueCat ; pour en demander l'effacement, écrivez à contact@2jagency.com depuis l'adresse du compte avant de supprimer le compte."));
+  assert.ok(text.includes("Les achats et abonnements sont gérés par l'App Store ou Google Play et par notre prestataire de paiement RevenueCat ; pour en demander l'effacement, écrivez à contactsnormal@gmail.com depuis l'adresse du compte avant de supprimer le compte."));
   assert.ok(text.includes("OpenAI peut conserver une demande d'analyse approfondie jusqu'à 30 jours pour prévenir les abus."));
   assert.match(text, /depuis l'adresse du compte/);
   assert.doesNotMatch(text, /délai raisonnable|automatically delete|effacement automatique/i);

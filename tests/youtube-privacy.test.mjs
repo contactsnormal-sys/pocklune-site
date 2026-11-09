@@ -7,7 +7,7 @@ const requiredLinks = [
   'https://www.youtube.com/t/terms',
   'https://policies.google.com/privacy',
   'https://security.google.com/settings/security/permissions',
-  'mailto:contact@2jagency.com',
+  'mailto:contactsnormal@gmail.com',
 ];
 
 // Régressions visées : ancre introuvable, information non cliquable,
