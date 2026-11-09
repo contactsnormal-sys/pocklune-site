@@ -8,12 +8,11 @@ const baseline = name => execFileSync('git', ['show', `438eb18b67036e9f24eb2b3d3
 const section = (html, heading) => html.split(`<h2>${heading}</h2>`)[1]?.split('<h2>')[0];
 
 for (const [page, language] of [['privacy.html', 'fr'], ['privacy-en.html', 'en']]) {
-  test(`${page} : compte facultatif et budget local`, () => {
+  test(`${page} : compte demandé à l’ouverture et budget local`, () => {
     const html = read(page);
-    assert.match(html, language === 'fr' ? /Continuer sans compte/ : /without an account/);
-    assert.match(html, language === 'fr' ? /compte est facultatif/ : /account is optional/);
+    assert.match(html, language === 'fr' ? /compte Google ou Apple est demandé/ : /Google or Apple account is required/);
     assert.match(html, language === 'fr' ? /budget reste enregistré sur votre appareil/ : /budget stays stored on your device/);
-    assert.doesNotMatch(html, /compte confirmé est obligatoire|confirmed account is required/i);
+    assert.doesNotMatch(html, /Continuer sans compte|without an account|compte est facultatif|account is optional/i);
   });
   test(`${page} : aucun outil de mesure dans l'application`, () => {
     const html = read(page);
