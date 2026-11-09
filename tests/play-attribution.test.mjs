@@ -76,7 +76,7 @@ test('calculator handoff explains re-entry and the destination instead of implyi
   const handoff = html.split('id="calculator-next-step"')[1].split('</div>')[0];
   assert.match(handoff, /montants ne sont pas transférés/);
   assert.match(handoff, /saisissez vos montants/);
-  assert.match(handoff, /compte Pocklune confirmé/i);
+  assert.match(handoff, /compte est facultatif/i);
   assert.match(handoff, /store-big">Google Play</);
   assert.match(handoff, /apps.apple.com\/fr\/app\/id6807771884/);
   assert.doesNotMatch(handoff, /retrouver ce calcul/);
