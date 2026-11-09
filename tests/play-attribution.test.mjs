@@ -76,7 +76,8 @@ test('calculator handoff explains re-entry and the destination instead of implyi
   const handoff = html.split('id="calculator-next-step"')[1].split('</div>')[0];
   assert.match(handoff, /montants ne sont pas transférés/);
   assert.match(handoff, /saisissez vos montants/);
-  assert.match(handoff, /compte Google ou Apple est demandé/i);
+  assert.match(handoff, /Sur iPhone \(1\.0\.190 et suivantes\), le compte est facultatif/);
+  assert.match(handoff, /sur Android \(version actuelle\), un compte Google est demandé/i);
   assert.match(handoff, /store-big">Google Play</);
   assert.match(handoff, /apps.apple.com\/fr\/app\/id6807771884/);
   assert.doesNotMatch(handoff, /retrouver ce calcul/);

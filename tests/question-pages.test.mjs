@@ -81,7 +81,7 @@ for (const page of pages) {
       if (url.hash && local.endsWith('.html')) assert.ok(localHtml.includes(`id="${url.hash.slice(1)}"`), url.href);
     }
     assert.ok(!/\b(?:I\u0041|A\u0049)\b|intelligence artificielle/i.test(html), 'Vocabulaire exclu absent');
-    assert.ok(!/[\u20ac\u0024]|\bE\u0055R\b|\d+[,.]\d{2}/i.test(html), 'Aucun tarif ni montant');
+    assert.ok(!/[\u20ac\u0024]|\bE\u0055R\b|\d+[,.]\d{2}(?!\d)/i.test(html), 'Aucun tarif ni montant');
   });
 }
 

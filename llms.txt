@@ -4,7 +4,7 @@
 
 Key facts:
 - No bank connection: no bank credentials, no aggregator. Users type income, bills and expenses, or import a statement they choose.
-- Budget data (amounts, receipts, photos) is stored on the phone. A Google or Apple account is required when you open the app; your budget stays on the phone, with no bank connection.
+- Budget data (amounts, receipts, photos) is stored on the phone. On iPhone (1.0.190 and later), an account is optional and the budget stays on the phone; on Android (current version), a Google account is required at launch. No bank connection.
 - No advertising and no advertising trackers in the app. Data is never sold.
 - Free plan: monthly budget, amount left to spend, categories, daily mission, manual import/export.
 - Prices vary by country; the exact price is shown by the App Store or Google Play before any payment. Subscriptions renew automatically and can be cancelled anytime from the Apple or Google account.
