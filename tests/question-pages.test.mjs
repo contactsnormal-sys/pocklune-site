@@ -106,6 +106,7 @@ test('sitemap et llms rendent les trois langues accessibles avec le nom actuel',
   assert.ok(!llms.includes('Pocklune : Budget privé'));
   for (const page of pages) {
     assert.ok(llms.includes(base + page.file));
-    assert.ok(sitemap.includes(`<url><loc>${base}${page.file}</loc><lastmod>2026-10-26</lastmod></url>`));
+    const contentLastmod = page.lang === 'en' ? '2026-11-20' : '2026-10-26';
+    assert.ok(sitemap.includes(`<url><loc>${base}${page.file}</loc><lastmod>${contentLastmod}</lastmod></url>`));
   }
 });
