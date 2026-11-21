@@ -8,6 +8,14 @@
   const isInternalQa = /^codex_internal(?:_[a-z0-9]+)?$/.test(
     new URLSearchParams(window.location.search).get('qa') || '',
   );
+  const isEnglish = /^en(?:-|$)/i.test(document.documentElement.lang || '');
+  const englishConsent = {
+    title: 'Website analytics and advertising',
+    description: 'With your permission, Pocklune uses Google Analytics, Google Tag Manager, and Google Ads tags to measure how the site is used and how well campaigns work. No analytics or advertising trackers load before you make a choice. This does not apply to data in the Pocklune app.',
+    refuse: 'Reject all',
+    accept: 'Accept all',
+    settings: 'Website privacy',
+  };
   let previousFocus = null;
 
   window.dataLayer = window.dataLayer || [];
@@ -78,11 +86,11 @@
     dialog.setAttribute('aria-modal', 'true');
     dialog.setAttribute('aria-labelledby', 'pocklune-consent-title');
     dialog.innerHTML = `
-      <h2 id="pocklune-consent-title">Mesure et publicité du site</h2>
-      <p>Avec votre accord, Pocklune utilise Google Analytics, Google Tag Manager et les balises Google Ads pour mesurer les pages utiles et l’efficacité de ses campagnes. Aucun traceur publicitaire ou analytique n’est chargé avant votre choix. Cela ne concerne pas les données de l’application Pocklune.</p>
+      <h2 id="pocklune-consent-title">${isEnglish ? englishConsent.title : 'Mesure et publicité du site'}</h2>
+      <p>${isEnglish ? englishConsent.description : "Avec votre accord, Pocklune utilise Google Analytics, Google Tag Manager et les balises Google Ads pour mesurer les pages utiles et l’efficacité de ses campagnes. Aucun traceur publicitaire ou analytique n’est chargé avant votre choix. Cela ne concerne pas les données de l’application Pocklune."}</p>
       <div class="pocklune-consent-actions">
-        <button type="button" data-choice="refuse">Tout refuser</button>
-        <button type="button" data-choice="accept">Tout accepter</button>
+        <button type="button" data-choice="refuse">${isEnglish ? englishConsent.refuse : 'Tout refuser'}</button>
+        <button type="button" data-choice="accept">${isEnglish ? englishConsent.accept : 'Tout accepter'}</button>
       </div>`;
     dialog.addEventListener('click', (event) => {
       const button = event.target.closest('button[data-choice]');
@@ -124,7 +132,7 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'pocklune-consent-settings';
-    button.textContent = 'Confidentialité du site';
+    button.textContent = isEnglish ? englishConsent.settings : 'Confidentialité du site';
     button.addEventListener('click', showDialog);
     document.body.append(button);
   };
